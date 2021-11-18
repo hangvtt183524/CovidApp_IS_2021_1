@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View, 
   Text,
@@ -11,50 +11,68 @@ import {
 import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import style_default from '../shared/const';
 
 const RegisterScreen = () => {
+
+  const [hidePass, setHidePass] = useState(true);
+
+  const [hideRetypePass, setHideRetypePass] = useState(true);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.text_header}>SignUp Now!</Text>
+        <Text style={styles.text_header}>Hãy đăng ký tài khoản!</Text>
       </View>
       <Animatable.View
         animation="fadeInUpBig"
         style={styles.footer}
       >
         <ScrollView>
-          <Text style={styles.text_footer}>Can cuoc cong dan</Text>
+          <Text style={styles.text_footer}>Căn cước công dân</Text>
           <View style={styles.action}>
             <FontAwesome name="user-o" color={style_default.AUTHEN_COLOR} size={20} />
             <TextInput 
-              placeholder="So CCCD/CMND"
+              placeholder="Số CCCD/CMND"
               autoCapitalize="none"
               style={styles.textInput}
             />
           </View>
-          <Text style={styles.text_footer}>Mat khau</Text>
+          <Text style={styles.text_footer}>Mật khẩu</Text>
           <View style={styles.action}>
             <Feather name="lock" color={style_default.AUTHEN_COLOR} size={20} />
             <TextInput 
-              placeholder="Nhap mat khau"
+              placeholder="Nhập mật khẩu"
               autoCapitalize="none"
               style={styles.textInput}
+              secureTextEntry={hidePass ? true : false}
+            />
+            <FontAwesome5
+              name={hidePass ? 'eye' : 'eye-slash'} 
+              color={'grey'} size={20} 
+              onPress={() => setHidePass(!hidePass)}
             />
           </View>
-          <Text style={styles.text_footer}>Nhap lai mat khau</Text>
+          <Text style={styles.text_footer}>Nhập lại mật khẩu</Text>
           <View style={styles.action}>
             <Feather name="lock" color={style_default.AUTHEN_COLOR} size={20} />
             <TextInput 
-              placeholder="Nhap lai chinh xac mat khau"
+              placeholder="Nhập lại chính xác mật khẩu"
               autoCapitalize="none"
               style={styles.textInput}
+              secureTextEntry={hideRetypePass ? true : false}
+            />
+            <FontAwesome5
+              name={hideRetypePass ? 'eye' : 'eye-slash'} 
+              color={'grey'} size={20} 
+              onPress={() => setHideRetypePass(!hideRetypePass)}
             />
           </View>
           <View style={styles.button}>
             <TouchableOpacity style={styles.signIn}>
-              <Text style={styles.textSign}>Dang ki tai khoan</Text>
+              <Text style={styles.textSign}>Đăng ký tài khoản</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -90,7 +108,7 @@ const styles = StyleSheet.create({
   },
   text_header: {
     color: style_default.WHITE_COLOR,
-    fontSize: 30, 
+    fontSize: 25, 
     fontWeight: 'bold'
   },
   text_footer: {
@@ -116,7 +134,8 @@ const styles = StyleSheet.create({
   },
   textSign: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   signIn: {
     width: '100%',
@@ -126,5 +145,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: style_default.THEME_COLOR,
     borderWidth: 1,
+    backgroundColor: style_default.THEME_COLOR,
   }
 });

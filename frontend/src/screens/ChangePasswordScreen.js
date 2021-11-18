@@ -16,27 +16,20 @@ import Feather from 'react-native-vector-icons/Feather';
 import style_default from '../shared/const';
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
-const LoginScreen = ({navigation}) => {
+const ChangePasswordScreen = () => {
     const { colors } = useTheme();
 
-    const [hidePass, setHidePass] = useState(true);
+    const [hideOldPass, setHideOldPass] = useState(true);
 
-    const isLogin = true;
+    const [hideNewPass, setHideNewPass] = useState(true);
 
-    const login = (isLogin) => {
-        
-        navigation.navigate("Home");
-    }
-
-    const register = () => {
-        navigation.navigate("RegisterScreen");
-    }
+    const [hideRetypePass, setHideRetypePass] = useState(true);
 
     return (
         <View style={styles.container}>
             {/* <StatusBar backgroundColor='#009387' barStyle='light-content'></StatusBar> */}
             <View style={styles.header}>
-                <Text style={styles.text_header}>Sổ sức khỏe điện tử</Text>
+                <Text style={styles.text_header}>Đổi mật khẩu</Text>
                 
             </View>
             <Animatable.View 
@@ -47,36 +40,64 @@ const LoginScreen = ({navigation}) => {
             >
                 <Text style={[styles.text_footer, {
                     color: colors.text
-                }]}>Số điện thoại</Text>
+                }]}>Nhập mật khẩu cũ</Text>
                 <View style={styles.action}>
-                    <FontAwesom name="user-o" color={colors.text} size={20} />
+                    <FontAwesom name="lock" color={colors.text} size={20} />
                     <TextInput 
-                        placeholder="Số điện thoại"
+                        placeholder="Mật khẩu cũ"
                         placeholderTextColor="#666666"
                         style={styles.textInput}
                         autoCapitalize="none"
+                        secureTextEntry={hideOldPass ? true : false}
+                    />
+                    <FontAwesome5
+                        name={hideOldPass ? 'eye' : 'eye-slash'} 
+                        color={colors.text} size={20} 
+                        onPress={() => setHideOldPass(!hideOldPass)}
                     />
                 </View>
 
                 <Text style={[styles.text_footer, {
                     color: colors.text
-                }]}>Mật khẩu</Text>
+                }]}>Nhập mật khẩu mới</Text>
                 <View style={styles.action}>
-                    <Feather name="lock" color={colors.text} size={20} />
+                    <FontAwesom name="lock" color={colors.text} size={20} />
                     
                     <TextInput 
-                        placeholder="Mật khẩu"
+                        placeholder="Mật khẩu mới"
                         placeholderTextColor="#666666"
                         style={[styles.textInput, {
                             color: colors.text
                         }]}
-                        secureTextEntry={hidePass ? true : false}
+                        secureTextEntry={hideNewPass ? true : false}
                         autoCapitalize="none"
                     />
                     <FontAwesome5
-                        name={hidePass ? 'eye' : 'eye-slash'} 
+                        name={hideNewPass ? 'eye' : 'eye-slash'} 
                         color={colors.text} size={20} 
-                        onPress={() => setHidePass(!hidePass)}
+                        onPress={() => setHideNewPass(!hideNewPass)}
+                    />
+                </View>
+
+                <Text style={[styles.text_footer, {
+                    color: colors.text
+                }]}>Nhập lại mật khẩu mới</Text>
+                <View style={styles.action}>
+                    <FontAwesom name="lock" color={colors.text} size={20} />
+                    
+                    <TextInput 
+                        placeholder="Mật khẩu mới"
+                        placeholderTextColor="#666666"
+                        style={[styles.textInput, {
+                            color: colors.text
+                        }]}
+                        secureTextEntry={hideRetypePass ? true : false}
+                        autoCapitalize="none"
+                    />
+                    <FontAwesome5
+                        name={hideRetypePass ? 'eye' : 'eye-slash'} 
+                        color={colors.text} size={20} 
+                        onPress={() => setHideRetypePass(!hideRetypePass)}
                     />
                 </View>
                 <TouchableOpacity>
@@ -89,27 +110,17 @@ const LoginScreen = ({navigation}) => {
                             borderWidth: 1,
                             marginTop: 15,
                         }]}
-                        onPress={login}
                     >
-                        <Text style={[styles.textSign, {color:'white'}]}>Đăng nhập</Text>
+                        <Text style={[styles.textSign, {color:'white'}]}>Đổi mật khẩu</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.signUp, {
-                            borderColor: style_default.THEME_COLOR,
-                            borderWidth: 1,
-                            marginTop: 15
-                        }]}
-                        onPress={register}
-                    >
-                        <Text style={styles.textSign}>Chưa có tài khoản?</Text>
-                    </TouchableOpacity>
+                    
                 </View>
             </Animatable.View>
         </View>
     )
 };
 
-export default LoginScreen;
+export default ChangePasswordScreen;
 
 const styles = StyleSheet.create({
     container: {

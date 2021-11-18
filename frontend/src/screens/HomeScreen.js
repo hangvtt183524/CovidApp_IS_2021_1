@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { PRIMARY_COLOR, WHITE_COLOR } from '../shared/const';
+import color_default from '../shared/const';
 
-const Home = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
 
   const handlePress = (next) => {
     navigation.navigate(next);
@@ -14,7 +14,7 @@ const Home = ({ navigation }) => {
           onPress={() => handlePress('LoginView')}
           style={styles.button}
         >
-          <Text style={{ color: WHITE_COLOR}}>
+          <Text style={{ color: color_default.WHITE_COLOR}}>
               Đăng nhập
           </Text>
         </TouchableOpacity>
@@ -24,7 +24,7 @@ const Home = ({ navigation }) => {
           onPress={() => handlePress('RegisterView')}
           style={styles.button}
         >
-          <Text style={{ color: WHITE_COLOR}}>
+          <Text style={{ color: color_default.WHITE_COLOR}}>
               Đăng ký
           </Text>
         </TouchableOpacity>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: PRIMARY_COLOR,
+    backgroundColor: color_default.PRIMARY_COLOR,
     padding: 10,
     marginVertical: 5,
     borderRadius: 20,
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default HomeScreen;
