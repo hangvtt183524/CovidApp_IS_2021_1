@@ -10,6 +10,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import ChangePasswordScreen from "../screens/ChangePasswordScreen";
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ const Home = () => {
                 name="HomeScreen"
                 component={HomeScreen}
                 options={{
-                    tabBarLabel: "Trang chủ",
+                    tabBarLabel: "Home",
                     tabBarIcon: ({ color }) => (
                         <AntDesign name="home" size={24} color={color} />
                     )
@@ -33,7 +34,7 @@ const Home = () => {
                 name="NotificationScreen"
                 component={NotificationScreen}
                 options={{
-                    tabBarLabel: "Thông báo",
+                    tabBarLabel: "Notify",
                     tabBarIcon: ({ color }) => (
                         <AntDesign name="notification" size={24} color={color} />
                     )
@@ -43,7 +44,7 @@ const Home = () => {
                 name="ProfileScreen"
                 component={ProfileScreen}
                 options={{
-                    tabBarLabel: "Cá nhân",
+                    tabBarLabel: "Profile",
                     tabBarIcon: ({ color }) => (
                         <AntDesign name="user" size={24} color={color} />
                     )
@@ -77,5 +78,6 @@ const RootNavigator = () => {
         </NavigationContainer>
     )
 }
+
 
 export default RootNavigator;

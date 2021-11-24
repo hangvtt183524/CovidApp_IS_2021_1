@@ -48,15 +48,15 @@ const ProfileScreen = ({navigation}) => {
                     <MaterialIcons name='arrow-forward-ios' size={20} style={styles.arrow} />
                 </TouchableOpacity>
                 <View style={{borderColor: 'grey', borderWidth: 0.5}}></View>
-                <TouchableOpacity style={styles.option}>
-                    <MaterialIcons name='info' size={40} style={styles.iconOption} />
-                    <Text style={styles.textOption}>Giới thiệu</Text>
-                    <MaterialIcons name='arrow-forward-ios' size={20} style={styles.arrow} />
-                </TouchableOpacity>
-                <View style={{borderColor: 'grey', borderWidth: 0.5}}></View>
                 <TouchableOpacity style={styles.option} onPress={changePassword}>
                     <MaterialIcons name='settings' size={40} style={styles.iconOption} />
                     <Text style={styles.textOption}>Đổi mật khẩu</Text>
+                    <MaterialIcons name='arrow-forward-ios' size={20} style={styles.arrow} />
+                </TouchableOpacity>
+                <View style={{borderColor: 'grey', borderWidth: 0.5}}></View>
+                <TouchableOpacity style={styles.option}>
+                    <MaterialIcons name='info' size={40} style={styles.iconOption} />
+                    <Text style={styles.textOption}>Giới thiệu</Text>
                     <MaterialIcons name='arrow-forward-ios' size={20} style={styles.arrow} />
                 </TouchableOpacity>
                 <View style={{borderColor: 'grey', borderWidth: 0.5}}></View>
