@@ -12,6 +12,7 @@ import * as Animatable from 'react-native-animatable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { FontAwesome5 } from '@expo/vector-icons';
+import BackButton from '../components/BackButton';
 
 import style_default from '../shared/const';
 
@@ -23,6 +24,7 @@ const RegisterScreen = () => {
 
   return (
     <View style={styles.container}>
+      <BackButton />
       <View style={styles.header}>
         <Text style={styles.text_header}>Hãy đăng ký tài khoản!</Text>
       </View>

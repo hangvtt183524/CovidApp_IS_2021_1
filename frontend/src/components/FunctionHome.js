@@ -18,7 +18,7 @@ const iconMap = {
 
 const FunctionHome = (functionName) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={functionName.event}>
             <LinearGradient colors={['#916BBF', '#C996CC']} style={styles.lineargradient} >
                 <View>
                     {functionName.name === 'Notification' ? <Ionicons name="notifications" color={style_default.WHITE_COLOR} size={40} style={styles.icon} /> : <MaterialCommunityIcons name={iconMap[functionName.name]}  color={style_default.WHITE_COLOR} size={40} style={styles.icon} />}
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     },
     icon: {
         flex: 1,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        paddingTop: 10
     },
     lineargradient: {
         flex: 1,
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
     },
     lineargradient_text: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        paddingBottom: 5
     }
 });
 export default FunctionHome;

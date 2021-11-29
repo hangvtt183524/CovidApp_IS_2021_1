@@ -11,7 +11,12 @@ import FunctionHome from "../components/FunctionHome";
 
 import style_default from '../shared/const';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
+
+  const toProfile = () => {
+    navigation.navigate('ProfileScreen');
+  } 
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,7 +35,7 @@ const HomeScreen = () => {
           <FunctionHome name="History" />
         </View>
         <View  style={styles.body_function}>
-          <FunctionHome name="YourQR" />
+          <FunctionHome name="YourQR" event={toProfile} />
         </View>
       </View>
     </View>
