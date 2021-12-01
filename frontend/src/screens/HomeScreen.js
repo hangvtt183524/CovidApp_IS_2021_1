@@ -15,7 +15,15 @@ const HomeScreen = ({navigation}) => {
 
   const toProfile = () => {
     navigation.navigate('ProfileScreen');
-  } 
+  }
+
+  const toScanQr = () => {
+    navigation.navigate('ScanQrScreen');
+  }
+
+  const toHistory = () => {
+    navigation.navigate('HistoryScreen');
+  }
 
   return (
     <View style={styles.container}>
@@ -29,10 +37,10 @@ const HomeScreen = ({navigation}) => {
       </View>
       <View style={styles.body}>
         <View  style={styles.body_function}>
-          <FunctionHome name="Scan QR" />
+          <FunctionHome name="Scan QR" event={toScanQr}/>
         </View>
         <View  style={styles.body_function}>
-          <FunctionHome name="History" />
+          <FunctionHome name="History" event={toHistory}/>
         </View>
         <View  style={styles.body_function}>
           <FunctionHome name="YourQR" event={toProfile} />

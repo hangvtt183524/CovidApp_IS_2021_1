@@ -10,6 +10,8 @@ import RegisterScreen from "../screens/RegisterScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import ChangePasswordScreen from "../screens/ChangePasswordScreen";
+import HistoryScreen from "../screens/HistoryScreen";
+import ScanQrScreen from "../screens/ScanQrScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -70,6 +72,8 @@ const RootNavigator = () => {
                 <Stack.Screen name="HomeScreen" component={HomeScreen} />
                 <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
                 <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+                <Stack.Screen name="HistoryScreen" component={HistoryScreen} />
+                <Stack.Screen name="ScanQrScreen" component={ScanQrScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="ChangePasswordScreen" component={ChangePasswordScreen} />
                 <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
