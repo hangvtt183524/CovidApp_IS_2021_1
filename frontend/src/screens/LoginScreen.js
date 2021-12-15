@@ -15,18 +15,41 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import style_default from '../shared/const';
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import axios from 'axios';
 
 const LoginScreen = ({navigation}) => {
     const { colors } = useTheme();
 
     const [hidePass, setHidePass] = useState(true);
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const isLogin = false;
 
-    const isLogin = true;
-
-    const login = (isLogin) => {
+    const home = () => {
         
         navigation.navigate("Home");
     }
+
+    const login =  async function (event) {
+        event.preventDefault();
+
+        const account = {
+            phoneNumber: phoneNumber,
+            email: email,
+            password: password
+        };
+
+        await axois.post(`http://192.168.0.108:5000/accounts/login`, { account })
+        .then(res => {
+            if (res.data.message === 'OK') isLogin = true;
+        })
+        .catch(err => {
+            console.log(err);            
+        });
+
+        if (isLogin) navigation.navigate("Home");
+    };
 
     const register = () => {
         navigation.navigate("RegisterScreen");
@@ -55,6 +78,21 @@ const LoginScreen = ({navigation}) => {
                         placeholderTextColor="#666666"
                         style={styles.textInput}
                         autoCapitalize="none"
+                        onChangeText={text => setPhoneNumber(text)}
+                    />
+                </View>
+
+                <Text style={[styles.text_footer, {
+                    color: colors.text
+                }]}>Email</Text>
+                <View style={styles.action}>
+                    <FontAwesom name="user-o" color={colors.text} size={20} />
+                    <TextInput 
+                        placeholder="Email"
+                        placeholderTextColor="#666666"
+                        style={styles.textInput}
+                        autoCapitalize="none"
+                        onChangeText={text => setEmail(text)}
                     />
                 </View>
 
@@ -72,6 +110,7 @@ const LoginScreen = ({navigation}) => {
                         }]}
                         secureTextEntry={hidePass ? true : false}
                         autoCapitalize="none"
+                        onChangeText={text => setPassword(text)}
                     />
                     <FontAwesome5
                         name={hidePass ? 'eye' : 'eye-slash'} 
@@ -89,7 +128,7 @@ const LoginScreen = ({navigation}) => {
                             borderWidth: 1,
                             marginTop: 15,
                         }]}
-                        onPress={login}
+                        onPress={home}
                     >
                         <Text style={[styles.textSign, {color:'white'}]}>Đăng nhập</Text>
                     </TouchableOpacity>
